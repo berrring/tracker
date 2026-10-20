@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 580" width="950" height="580" style="background:#0f172a; font-family:'Segoe UI',sans-serif;">
+  <defs>
+    <linearGradient id="grad-esp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="grad-gsm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#831843"/>
+      <stop offset="100%" stop-color="#500724"/>
+    </linearGradient>
+    <linearGradient id="grad-gps" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <linearGradient id="grad-pwr" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+    <linearGradient id="grad-ble" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+  </defs>
+
+  <text x="475" y="38" fill="#38bdf8" font-size="24" font-weight="bold" text-anchor="middle">Kids GPS Tracker - System Architecture</text>
+  <text x="475" y="62" fill="#94a3b8" font-size="13" text-anchor="middle">Dual-Core ESP32, GNSS Positioning, Cellular Telemetry &amp; BLE Proximity</text>
+
+  <!-- ESP32 Center Block -->
+  <rect x="330" y="110" width="290" height="350" rx="16" fill="url(#grad-esp)" stroke="#38bdf8" stroke-width="2.5"/>
+  <text x="475" y="145" fill="#38bdf8" font-size="20" font-weight="bold" text-anchor="middle">ESP32 (Core Hub)</text>
+  <text x="475" y="168" fill="#64748b" font-size="12" text-anchor="middle">Dual Tensilica Xtensa LX6 / RISC-V</text>
+
+  <rect x="350" y="190" width="250" height="52" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="475" y="212" fill="#f8fafc" font-size="13" font-weight="600" text-anchor="middle">UART2 (GPIO 16 RX / 17 TX)</text>
+  <text x="475" y="230" fill="#94a3b8" font-size="11" text-anchor="middle">AT Commands, SMS &amp; GPRS/4G</text>
+
+  <rect x="350" y="255" width="250" height="52" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="475" y="277" fill="#f8fafc" font-size="13" font-weight="600" text-anchor="middle">UART1 (GPIO 18 RX / 19 TX)</text>
+  <text x="475" y="295" fill="#94a3b8" font-size="11" text-anchor="middle">NMEA Stream Decoder (TinyGPS++)</text>
+
+  <rect x="350" y="320" width="250" height="52" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="475" y="342" fill="#f8fafc" font-size="13" font-weight="600" text-anchor="middle">GPIO 4 (SOS Input) + GPIO 2 (LED)</text>
+  <text x="475" y="360" fill="#94a3b8" font-size="11" text-anchor="middle">Omron B3F-4055 &amp; Kingbright LED</text>
+
+  <rect x="350" y="385" width="250" height="52" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="475" y="407" fill="#38bdf8" font-size="13" font-weight="600" text-anchor="middle">BLE 5.0 Radio Engine</text>
+  <text x="475" y="425" fill="#94a3b8" font-size="11" text-anchor="middle">GATT Server: SOS &amp; Coordinates Notify</text>
+
+  <!-- Left: GPS Block -->
+  <rect x="40" y="110" width="230" height="155" rx="12" fill="url(#grad-gps)" stroke="#10b981" stroke-width="2"/>
+  <text x="155" y="140" fill="#34d399" font-size="16" font-weight="bold" text-anchor="middle">NEO-6M GNSS</text>
+  <text x="155" y="160" fill="#a7f3d0" font-size="11" text-anchor="middle">Active Ceramic Patch Antenna</text>
+  <text x="155" y="185" fill="#ffffff" font-size="12" text-anchor="middle">50-Channel Engine | 1-5Hz</text>
+  <text x="155" y="205" fill="#ffffff" font-size="12" text-anchor="middle">Backup Battery &amp; EEPROM</text>
+  <text x="155" y="230" fill="#6ee7b7" font-size="11" text-anchor="middle">9600 Baud NMEA-0183</text>
+
+  <!-- Left: BLE App Block -->
+  <rect x="40" y="310" width="230" height="150" rx="12" fill="url(#grad-ble)" stroke="#60a5fa" stroke-width="2"/>
+  <text x="155" y="340" fill="#93c5fd" font-size="16" font-weight="bold" text-anchor="middle">Parent's Smartphone</text>
+  <text x="155" y="360" fill="#bfdbfe" font-size="11" text-anchor="middle">BLE Companion &amp; Digital Leash</text>
+  <text x="155" y="388" fill="#ffffff" font-size="12" text-anchor="middle">• Instant SOS Notification</text>
+  <text x="155" y="408" fill="#ffffff" font-size="12" text-anchor="middle">• Real-time Coordinates Feed</text>
+  <text x="155" y="428" fill="#ffffff" font-size="12" text-anchor="middle">• RSSI Proximity Distance Check</text>
+
+  <!-- Right: GSM Block -->
+  <rect x="680" y="110" width="230" height="155" rx="12" fill="url(#grad-gsm)" stroke="#f43f5e" stroke-width="2"/>
+  <text x="795" y="140" fill="#fda4af" font-size="16" font-weight="bold" text-anchor="middle">SIM800L / A7670E</text>
+  <text x="795" y="160" fill="#fecdd3" font-size="11" text-anchor="middle">Cellular Modem (SMS &amp; GPRS/4G)</text>
+  <text x="795" y="185" fill="#ffffff" font-size="12" text-anchor="middle">Voltage Divider (1k/2k) on RX</text>
+  <text x="795" y="205" fill="#ffffff" font-size="12" text-anchor="middle">Nano-SIM &amp; IPEX Antenna</text>
+  <text x="795" y="230" fill="#fda4af" font-size="11" text-anchor="middle">AT Commands &amp; HTTP Stack</text>
+
+  <!-- Right: Cloud / Emergency Contacts -->
+  <rect x="680" y="310" width="230" height="150" rx="12" fill="#1e1b4b" stroke="#a855f7" stroke-width="2"/>
+  <text x="795" y="340" fill="#d8b4fe" font-size="16" font-weight="bold" text-anchor="middle">Remote Telemetry</text>
+  <text x="795" y="360" fill="#e9d5ff" font-size="11" text-anchor="middle">Emergency Alerts &amp; Cloud</text>
+  <text x="795" y="388" fill="#ffffff" font-size="12" text-anchor="middle">• Emergency SMS (Google Maps)</text>
+  <text x="795" y="408" fill="#ffffff" font-size="12" text-anchor="middle">• Firebase Realtime DB (JSON)</text>
+  <text x="795" y="428" fill="#ffffff" font-size="12" text-anchor="middle">• Fall / Motion IMU Alerts</text>
+
+  <!-- Bottom: Power Block -->
+  <rect x="180" y="490" width="590" height="70" rx="12" fill="url(#grad-pwr)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="475" y="515" fill="#fde68a" font-size="15" font-weight="bold" text-anchor="middle">Power Subsystem (LiPo 3.7V + TP4056 / BQ24074 + Pololu S7V8F3)</text>
+  <text x="475" y="538" fill="#ffffff" font-size="12" text-anchor="middle">Panasonic 1000 µF Low-ESR Buffer (2A Peak GSM Absorption) + Murata 10µF/100nF Filters</text>
+
+  <!-- Connecting Lines -->
+  <line x1="270" y1="187" x2="330" y2="281" stroke="#10b981" stroke-width="2.5" stroke-dasharray="4,3"/>
+  <line x1="620" y1="216" x2="680" y2="187" stroke="#f43f5e" stroke-width="2.5"/>
+  <line x1="330" y1="411" x2="270" y2="385" stroke="#60a5fa" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <line x1="795" y1="265" x2="795" y2="310" stroke="#a855f7" stroke-width="2.5"/>
+  <line x1="475" y1="490" x2="475" y2="460" stroke="#f59e0b" stroke-width="2.5"/>
+</svg>
